@@ -1,4 +1,3 @@
-// actions.js
 export const SET_SEARCH_TEXT = 'SET_SEARCH_TEXT';
 export const SET_SORT_BY = 'SET_SORT_BY';
 export const SET_LOTTERY_DATA = 'SET_LOTTERY_DATA';
@@ -13,7 +12,7 @@ export const setSortBy = (sortBy) => ({
   payload: sortBy,
 });
 
-export const setLotteryData = (lotteryData) => ({
+export const setLotteryData = (data) => ({
   type: SET_LOTTERY_DATA,
-  payload: lotteryData,
+  payload: data,
 });
