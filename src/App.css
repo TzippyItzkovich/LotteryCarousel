@@ -1,38 +1,37 @@
-.App {
-  text-align: center;
-}
+/* App.css */
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
 }
 
-.App-link {
-  color: #61dafb;
+.lottery-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Media query for smaller screens (e.g., mobile devices) */
+@media (max-width: 576px) {
+  .lottery-cards-container {
+    grid-template-columns: repeat(1, 1fr);
   }
-  to {
-    transform: rotate(360deg);
+}
+
+/* Media query for medium screens */
+@media (min-width: 577px) and (max-width: 991px) {
+  .lottery-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Media query for desktop screens */
+@media (min-width: 992px) {
+  .lottery-cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 }
