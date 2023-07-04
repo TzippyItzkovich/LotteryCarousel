@@ -1,61 +1,80 @@
-import React, { useState } from 'react';
-import LotteryCard from './Components/LotteryCard/LotteryCard.js';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import LotteryCard from './Components/LotteryCard/LotteryCard';
 import './App.css';
 import log5071go from './g5071.svg';
-
-const lotteryData = [
-  {
-    id: 1,
-    lotteryName: 'Aottery A',
-    jackpot: '1,000,000',
-    drawTime: '8:00 PM',
-    resultDateTime: '2024-05-04 20:00:00',
-    resultNumbers: [5, 10, 15, 20, 25],
-    logoSrc: log5071go,
-  },
-  {
-    id: 2,
-    lotteryName: 'Lottery B',
-    jackpot: '2,000,000',
-    drawTime: '10:30 PM',
-    resultDateTime: '2025-05-01 22:30:00',
-    resultNumbers: [3, 7, 12, 18, 30],
-    logoSrc: log5071go,
-  },
-  {
-    id: 3,
-    lotteryName: 'XXX',
-    jackpot: '1,500',
-    drawTime: '10:30 PM',
-    resultDateTime: '2022-07-04 22:30:00',
-    resultNumbers: [3, 7, 12, 18, 30],
-    logoSrc: log5071go,
-  },
-  // Add more lottery data objects as needed
-];
+import { setSearchText, setSortBy, setLotteryData } from './redux/actions';
 
 const App = () => {
-  const [searchText, setSearchText] = useState('');
-  const [sortBy, setSortBy] = useState('');
+  const searchText = useSelector((state) => state.searchText);
+  const sortBy = useSelector((state) => state.sortBy);
+  const lotteryData = useSelector((state) => state.lotteryData);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // Simulating API call to fetch lotteryData
+    const fetchLotteryData = () => {
+      // Replace this with your actual API call to fetch lotteryData from the server
+      const fetchedData = [
+        {
+          id: 1,
+          lotteryName: 'Aottery A',
+          jackpot: '1,000,000',
+          drawTime: '8:00 PM',
+          resultDateTime: '2024-05-04 20:00:00',
+          resultNumbers: [5, 10, 15, 20, 25],
+          logoSrc: log5071go,
+        },
+        {
+          id: 2,
+          lotteryName: 'Lottery B',
+          jackpot: '2,000,000',
+          drawTime: '10:30 PM',
+          resultDateTime: '2025-05-01 22:30:00',
+          resultNumbers: [3, 7, 12, 18, 30],
+          logoSrc: log5071go,
+        },
+        {
+          id: 3,
+          lotteryName: 'XXX',
+          jackpot: '1,500',
+          drawTime: '10:30 PM',
+          resultDateTime: '2022-07-04 22:30:00',
+          resultNumbers: [3, 7, 12, 18, 30],
+          logoSrc: log5071go,
+        },
+        // Add more lottery data objects as needed
+      ];
+
+      // Dispatch the action to set the fetched lotteryData in Redux
+      dispatch(setLotteryData(fetchedData));
+    };
+
+    fetchLotteryData();
+  }, [dispatch]);
 
   const handleSearchChange = (e) => {
-    setSearchText(e.target.value);
+    dispatch(setSearchText(e.target.value));
   };
 
   const handleSortChange = (e) => {
-    setSortBy(e.target.value);
+    dispatch(setSortBy(e.target.value));
   };
 
-  const filteredLotteries = lotteryData.filter((lottery) => {
-    return lottery.lotteryName.toLowerCase().includes(searchText.toLowerCase());
-  });
+  const filteredLotteries = lotteryData
+    ? lotteryData.filter((lottery) =>
+        lottery.lotteryName.toLowerCase().includes(searchText.toLowerCase())
+      )
+    : [];
 
   const sortLotteries = (lotteries, sortBy) => {
     switch (sortBy) {
       case 'date':
         return lotteries.sort((a, b) => new Date(a.resultDateTime) - new Date(b.resultDateTime));
       case 'jackpot':
-        return lotteries.sort((a, b) => parseInt(a.jackpot.replace(/,/g, '')) - parseInt(b.jackpot.replace(/,/g, '')));
+        return lotteries.sort(
+          (a, b) => parseInt(a.jackpot.replace(/,/g, '')) - parseInt(b.jackpot.replace(/,/g, ''))
+        );
       case 'name':
         return lotteries.sort((a, b) => a.lotteryName.localeCompare(b.lotteryName));
       default:
