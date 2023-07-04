@@ -2,8 +2,8 @@
 
 .lottery-card {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 400px;
+  height: 200px;
   border-radius: 10px;
   background-color: #f0f0f0;
   cursor: pointer;
@@ -49,20 +49,28 @@
 .card-front {
   transform: rotateY(0deg);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .card-back {
   transform: rotateY(180deg);
-  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border: 2px solid #333333;
+  border-radius: 10px;
+}
+
+.lottery-logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.lottery-data {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #000000; /* Add border style */
-  border-radius: 10px; /* Add border radius */
 }
 
 .jackpot {
@@ -74,12 +82,6 @@
 .draw-time {
   font-size: 14px;
   color: #666666;
-  margin-bottom: 10px;
-}
-
-.lottery-logo {
-  width: 100px;
-  height: 100px;
   margin-bottom: 10px;
 }
 
@@ -107,7 +109,7 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: #ff0000; /* Replace with your desired color */
+  background-color: #333333;
   color: #ffffff;
   font-size: 14px;
   font-weight: bold;
@@ -115,7 +117,6 @@
   text-align: center;
   margin: 2px;
 }
-
 
 .card-link {
   display: inline-block;
@@ -142,4 +143,48 @@
   text-decoration: none;
   color: #ffffff;
   cursor: pointer;
+}
+
+.blue-side {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.left-side {
+  margin-right: 10px;
+}
+
+.lottery-logo {
+  width: 100px;
+  height: 100px;
+}
+
+.right-side {
+  flex-grow: 1;
+}
+
+.jackpot {
+  font-size: 24px;
+  font-weight: bold;
+  word-break: break-all;
+}
+
+.draw-time {
+  font-size: 14px;
+  color: #666666;
+}
+
+.lottery-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.button-section {
+  display: flex;
+  justify-content: space-between;
 }

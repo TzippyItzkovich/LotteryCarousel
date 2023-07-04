@@ -15,15 +15,28 @@ const LotteryCard = ({ lottery }) => {
   const renderBlueSide = () => {
     return (
       <div className="blue-side">
-        <h3 className="jackpot">{lottery.jackpot}</h3>
-        <p className="draw-time">Draw Time: {lottery.drawTime}</p>
-        <img className="lottery-logo" src={lottery.logoSrc} alt={lottery.lotteryName} />
-        <p className="lottery-name">{lottery.lotteryName}</p>
-        <button className="card-link" onClick={handleLinkClick}>Link to another page</button>
-        <button className="flip-btn" onClick={handleFlip}>Result</button>
+        <div className="left-side">
+          <img className="lottery-logo" src={lottery.logoSrc} alt={lottery.lotteryName} />
+        </div>
+        <div className="right-side">
+          <h3 className="jackpot">{lottery.jackpot}</h3>
+          <p className="draw-time">Draw Time: {lottery.drawTime}</p>
+          <p className="lottery-name">{lottery.lotteryName}</p>
+          <div className="button-section">
+            <button className="card-link" onClick={handleLinkClick}>
+              Link to another page
+            </button>
+            <button className="flip-btn" onClick={handleFlip}>
+              Result
+            </button>
+          </div>
+        </div>
       </div>
     );
   };
+  
+  
+  
 
   const renderResultSide = () => {
     return (
