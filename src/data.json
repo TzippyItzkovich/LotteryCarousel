@@ -1,0 +1,23 @@
+{
+    "lotteryData": [
+      {
+        "id": 1,
+        "lotteryName": "Lottery A",
+        "jackpot": "1,000,000",
+        "drawTime": "8:00 PM",
+        "resultDateTime": "2024-05-04 20:00:00",
+        "resultNumbers": [5, 10, 15, 20, 25],
+        "logoSrc": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/102010/g5071.png?itok=c6pd-BKL"
+      },
+      {
+        "id": 2,
+        "lotteryName": "Lottery B",
+        "jackpot": "1,000,000",
+        "drawTime": "8:00 PM",
+        "resultDateTime": "2024-05-04 20:00:00",
+        "logoSrc": "https://d1yjjnpx0p53s8.cloudfront.net/styles/logo-original-577x577/s3/102010/g5071.png?itok=c6pd-BKL",
+        "resultNumbers": [5, 10, 15, 20, 25]
+      }
+    ]
+  }
+  
