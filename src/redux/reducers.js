@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SET_SEARCH_TEXT, SET_SORT_BY, SET_LOTTERY_DATA } from './actions';
+import { SET_SEARCH_TEXT, SET_SORT_BY, SET_LOTTERY_DATA } from './actionTypes';
 
 const initialState = {
   searchText: '',
